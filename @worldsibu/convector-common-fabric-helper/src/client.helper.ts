@@ -195,7 +195,7 @@ export class ClientHelper {
     }
 
     const txResult = await this.sendQueryTx({ fcn, chaincodeId, args }, useAdmin);
-    const result = JSON.parse(txResult.result.response.payload.toString('utf8'));
+    const result = txResult.result.response.payload.toString('utf8') != "" ? JSON.parse(txResult.result.response.payload.toString('utf8')) : "";
 
     return {
       ...txResult,
